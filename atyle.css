@@ -1,0 +1,240 @@
+/* --- Reset & Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #08080a; /* Ultra dark background */
+    color: #e0e0e0;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Main Wrapper --- */
+.main-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* --- Header & Logo --- */
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo i {
+    font-size: 3rem;
+    color: #00e676; /* Neon Green Icon */
+    text-shadow: 0 0 15px rgba(0, 230, 118, 0.5);
+}
+
+.logo h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.logo h1 span {
+    color: #00e676;
+}
+
+header p {
+    color: #a0a0a0;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* --- App Container (Grid Layout) --- */
+.app-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+}
+
+@media (max-width: 800px) {
+    .app-container {
+        grid-template-columns: 1fr; /* Stack vertically on small screens */
+    }
+}
+
+/* --- Panel Styles (Glassmorphism) --- */
+.panel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.result-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Input Groups --- */
+.input-group {
+    margin-bottom: 20px;
+    position: relative; /* For copy button */
+}
+
+.result-panel .input-group {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #00e676; /* Accent color for labels */
+}
+
+label i {
+    font-size: 1.1rem;
+}
+
+textarea, input[type="password"], input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: 'Consolas', 'Courier New', monospace; /* Monospace for text areas */
+    transition: all 0.3s ease;
+    resize: none; /* Disable resizing */
+}
+
+textarea:focus, input:focus {
+    outline: none;
+    border-color: #00e676;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.result-panel textarea {
+    flex-grow: 1; /* Result textarea fills remaining space */
+    color: #81d4fa; /* Slight blue tint for result text */
+}
+
+/* --- Key Input Wrapper (Password Eye) --- */
+.key-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    color: #606060;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.toggle-password:hover {
+    color: #ffffff;
+}
+
+/* --- Buttons --- */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Primary Button (Encrypt - Green) */
+.btn-primary {
+    background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(0, 230, 118, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Secondary Button (Decrypt - Red/Orange) */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 82, 82, 0.1); /* Slight red hover */
+    border-color: #ff5252;
+    color: #ff5252;
+}
+
+/* Copy Button (Floating inside Result) */
+.btn-copy {
+    position: absolute;
+    top: 45px; /* adjust based on label height */
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #a0a0a0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    width: auto;
+    flex: none;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-copy:hover {
+    background: #00e676;
+    color: #000000;
+    border-color: #00e676;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    color: #606060;
+    font-size: 0.85rem;
+    padding: 20px 0;
+}
